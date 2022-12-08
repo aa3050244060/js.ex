@@ -2,7 +2,7 @@
 <html>
 <body>
 <form>
-Please input your name: <input type="text" id="name">
+Please input your name: <input type="text" id="name" onfocus="on(this)" onblur="off(this)">
 </form>
 <button type="button" onclick="myFunc()">Click!</button>
 <button type="button" onclick="clearmyfunc()">Clear!</button>
@@ -14,8 +14,8 @@ Please input your name: <input type="text" id="name">
 <button type="button" onclick="back()">Back</button>
 <br>
 <br>
-Please input your number1: <input type="text" id="n1">
-Please input your number2: <input type="text" id="n2">
+Please input your number1: <input type="text" id="n1" onfocus="on(this)" onblur="off(this)">
+Please input your number2: <input type="text" id="n2" onfocus="on(this)" onblur="off(this)">
 <p id="Cal"></p>
 <p id="Call"></p>
 <br>
@@ -23,14 +23,27 @@ Please input your number2: <input type="text" id="n2">
 <button type="button" onclick="clearr()">Clear</button>
 <br>
 <br>
-Enter Your Name: <input type="text" id="name1" onchange="upperCase()">
+Enter Your Name: <input type="text" id="name1" onchange="upperCase()" onfocus="on(this)" onblur="off(this)">
 <button type="button" onclick="clearrr()">Clear</button>
 <br>
 <br>
 <br>
 <div onmouseover="mOver(this)" onmouseout="mOut(this)"
 style="background-color:rgb(255,204,204);width:120px;height:20px;padding:40px;">Mouse Over Me</div>
+<div onmousedown="mDown(this)" onmouseup="mUp(this)"
+style="background-color:rgb(255,204,229);width:120px;height:20px;padding:40px;">Click</div>
+<br>
+<div onclick="hit()" style="background-color:rgb(204,255,255);width:120px;height:20px;padding:40px;">Hit</div>
+<button type="button" onclick="clear1()">Del</button>
+<p id="counter">0</p>
 <script>
+function on(x) {
+x.style.background = "yellow";
+}
+function off(x) {
+x.style.background = "white";
+}
+/**/
 function myFunc()
 {
 alert("Hello, " + document.getElementById("name").value);
@@ -39,7 +52,7 @@ function clearmyfunc()
 {
 document.getElementById("name").value="";
 }
-
+/***/
 function content1()
 {
 document.getElementById("content").innerHTML="This is content 1";
@@ -52,7 +65,7 @@ function back()
 {
 document.getElementById("content").innerHTML="Change content by clicking buttons";
 }
-
+/**/
 function cal()
 {
 let x=document.getElementById("n1").value;
@@ -77,7 +90,7 @@ document.getElementById("n2").value="";
 document.getElementById("Cal").innerHTML="";
 document.getElementById("Call").innerHTML="";
 }
-
+/**/
 function upperCase() 
 {
 let x = document.getElementById("name1");
@@ -87,14 +100,32 @@ function clearrr()
 {
 document.getElementById("name1").value="";
 }
-
+/**/
 function mOver(obj) {
 obj.innerHTML = "Hello!"
 }
 function mOut(obj) {
 obj.innerHTML = "Mouse Over Me"
 }
-
+function mDown(obj) 
+{
+obj.innerHTML = "Release";
+}
+function mUp(obj) {
+obj.innerHTML="Click";
+}
+/**/
+let number=0
+function hit() 
+{
+number=number+1
+document.getElementById("counter").innerHTML = number;
+}
+function clear1()
+{
+number=0
+document.getElementById("counter").innerHTML = number;
+}
 </script>
 </body>
 </html>
