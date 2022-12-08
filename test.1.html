@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form>
+Please input your name: <input type="text" id="name">
+</form>
+<button type="button" onclick="myFunc()">Click!</button>
+<button type="button" onclick="clearmyfunc()">Clear!</button>
+<br>
+<br>
+<p id="content">Change content by clicking buttons</p>
+<button type="button" onclick="content1()">Content 1</button>
+<button type="button" onclick="content2()">Content 2</button>
+<button type="button" onclick="back()">Back</button>
+<br>
+<br>
+Please input your number1: <input type="text" id="n1">
+Please input your number2: <input type="text" id="n2">
+<p id="Cal"></p>
+<p id="Call"></p>
+<br>
+<button type="button" onclick="cal()">Cal</button>
+<button type="button" onclick="clearr()">Clear</button>
+<br>
+<br>
+Enter Your Name: <input type="text" id="name1" onchange="upperCase()">
+<button type="button" onclick="clearrr()">Clear</button>
+<br>
+<br>
+<br>
+<div onmouseover="mOver(this)" onmouseout="mOut(this)"
+style="background-color:rgb(255,204,204);width:120px;height:20px;padding:40px;">Mouse Over Me</div>
+<script>
+function myFunc()
+{
+alert("Hello, " + document.getElementById("name").value);
+}
+function clearmyfunc()
+{
+document.getElementById("name").value="";
+}
+
+function content1()
+{
+document.getElementById("content").innerHTML="This is content 1";
+}
+function content2()
+{
+document.getElementById("content").innerHTML="This is content 2";
+}
+function back()
+{
+document.getElementById("content").innerHTML="Change content by clicking buttons";
+}
+
+function cal()
+{
+let x=document.getElementById("n1").value;
+let y=document.getElementById("n2").value;
+/*console.log(typeof(x));
+console.log(typeof(y));*/
+x=Number(x);
+y=Number(y);
+/*console.log(typeof(x));
+console.log(typeof(y));*/
+let z=x+y;
+/*console.log(z);*/
+let u=x-y;
+/*console.log(u);*/
+document.getElementById("Cal").innerHTML=("number1 + number2="+z);
+document.getElementById("Call").innerHTML=("number1 - number2="+u);
+}
+function clearr()
+{
+document.getElementById("n1").value="";
+document.getElementById("n2").value="";
+document.getElementById("Cal").innerHTML="";
+document.getElementById("Call").innerHTML="";
+}
+
+function upperCase() 
+{
+let x = document.getElementById("name1");
+x.value=x.value.toUpperCase();
+}
+function clearrr()
+{
+document.getElementById("name1").value="";
+}
+
+function mOver(obj) {
+obj.innerHTML = "Hello!"
+}
+function mOut(obj) {
+obj.innerHTML = "Mouse Over Me"
+}
+
+</script>
+</body>
+</html>
