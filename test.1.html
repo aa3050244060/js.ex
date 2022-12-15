@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="utf-8">
+</head>
 <body>
 <form>
 Please input your name: <input type="text" id="name" onfocus="on(this)" onblur="off(this)">
@@ -36,6 +39,17 @@ style="background-color:rgb(255,204,229);width:120px;height:20px;padding:40px;">
 <div onclick="hit()" style="background-color:rgb(204,255,255);width:120px;height:20px;padding:40px;">Hit</div>
 <button type="button" onclick="clear1()">Del</button>
 <p id="counter">0</p>
+<br>
+<form>
+Please input one number (1-100): <input type="text" onkeypress='checkEnterClick(event)' id="number9">
+</form>
+<button type="button" onclick="eval()">Guess!</button>
+<button type="button" onclick="ClearG()">Clear</button>
+<p id="guess"></p>
+<br>
+<form>
+Press any key: <input type="text" onkeydown="eval(event)">
+</form>
 <script>
 function on(x) {
 x.style.background = "yellow";
@@ -125,6 +139,60 @@ function clear1()
 {
 number=0
 document.getElementById("counter").innerHTML = number;
+}
+/**/
+let d = new Date();
+let time = d.getHours();
+if(time>=5 && time<12)
+{
+document.body.style.backgroundColor="#99CCFF";
+}
+else if(time>=12 && time<17)
+{
+document.body.style.backgroundColor="#FFEB83";
+}
+else if(time>=17 && time<19)
+{
+document.body.style.backgroundColor="#FFA681";
+}
+else if(time>=19 && time<5)
+{
+document.body.style.backgroundColor="#C0C0C0";
+}
+/**/
+let target=Math.floor((Math.random() * 100) + 1);
+console.log(target);
+function eval()
+{
+if(document.getElementById("number9").value > target)
+	{
+	document.getElementById("guess").innerHTML=("猜小一些");
+	}
+else if (document.getElementById("number9").value < target)
+	{
+	document.getElementById("guess").innerHTML=("猜大一些");
+	}
+else{
+	document.getElementById("guess").innerHTML=("Bingo!");
+	}
+}
+function ClearG()
+{
+document.getElementById("number9").value="";
+document.getElementById("guess").innerHTML="";
+}
+function checkEnterClick(e)
+{
+    if(e.keyCode == 13)
+    {
+	eval();
+    }
+}
+/**/
+function eval(event) 
+{
+let x = event.which || event.keyCode;
+console.log(x);
 }
 </script>
 </body>
